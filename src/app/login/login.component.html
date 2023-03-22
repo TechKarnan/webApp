@@ -1,1 +1,7 @@
 <p>login works!</p>
+<div>{{result}}</div>
+<div *ngIf = "btnClicked && result">Sucessfully Logged In....!</div>
+<ng-template *ngIf ="btnClicked==true && result == false">
+<div>Login failed....!</div>
+</ng-template>
+<button type="button" class="btn btn-primary" (click)="login()">Login</button>
