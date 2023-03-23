@@ -21,6 +21,10 @@ export class WebappApiService {
       return this.http.get < Boolean > (this.apiURL + 'login').pipe(catchError(this.errorHandler));
   }
 
+     register(data:any): Observable < Boolean> {
+        return this.http.post < Boolean > (this.apiURL + 'register',data,this.httpOptions).pipe(catchError(this.errorHandler));
+    }
+
   errorHandler(error: {
     error: {
         message: string;
