@@ -33,11 +33,11 @@ export class RegisterComponent {
 
 
   public register(){
+    this.formData = this.registerForm.value; 
     if(this.formData.passwd){
     console.log(this.registerForm.value);
-    this.formData = this.registerForm.value; 
     this.timestamp = Date.now();
-    this.key = this.salt + this.timestamp;
+    this.key = this.salt;
     this.encodedPass = bcrypt.hashSync(this.formData.passwd, this.key);
     console.log(this.encodedPass);
     console.log(

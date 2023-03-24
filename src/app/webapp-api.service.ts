@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
@@ -17,8 +17,13 @@ export class WebappApiService {
         })
     }
 
-    isLogin(): Observable < Boolean> {
-      return this.http.get < Boolean > (this.apiURL + 'login').pipe(catchError(this.errorHandler));
+ 
+
+    isLogin(username:string,password:string): Observable < string> {
+        const params = new HttpParams()
+        .set('username',username)
+        .set('password', password);
+      return this.http.get(this.apiURL + 'login', {params,responseType: 'text'}).pipe(catchError(this.errorHandler));
   }
 
      register(data:any): Observable < Boolean> {

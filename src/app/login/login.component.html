@@ -1,7 +1,18 @@
-<p>login works!</p>
-<div>{{result}}</div>
-<div *ngIf = "btnClicked && result">Sucessfully Logged In....!</div>
-<ng-template *ngIf ="btnClicked==true && result == false">
-<div>Login failed....!</div>
-</ng-template>
-<button type="button" class="btn btn-primary" (click)="login()">Login</button>
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" formControlName="username" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" formControlName="password" required>
+
+    <button type="submit">Login</button>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form>
+
+<h1>{{result}}</h1>
