@@ -1,0 +1,41 @@
+<!-- <header>
+    <style>
+        @font-face {
+            font-family: 'EntypoRegular';
+            src: url('assets/Entypo.otf') format('opentype');
+        }
+    </style>
+</header>
+
+<h1>Upload new Photo</h1>
+<form [formGroup]="catalogForm" (ngSubmit)="submit()"enctype="multipart/form-data">
+    Title:<input type="text" name="title" formControlName="name"/>
+    Image:<input type="file" name="image" accept="image/*" formControlName="image"  (change)="selectFile($event)"/>
+    <input type="submit" value="Upload" />
+</form>
+
+<div style="font-family:'EntypoRegular'">{{font}}</div> -->
+
+
+
+<div class="container-fluid">
+    <div class="row">
+      <div *ngFor = "let product of productsData" class="col-sm-4">
+        <div class="card" style="width:400px">
+            <img class="card-img-top" src="../../assets/redmi.jpg" alt="Card image">
+            <div class="card-body">
+              <h4 class="card-title">{{product.productName}}</h4>
+              <p class="card-text">{{product.productDescription}}</p>
+              <a href="#" class="btn btn-primary">By Now</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+

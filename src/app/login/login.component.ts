@@ -38,19 +38,18 @@ export class LoginComponent {
   public login(){
     let formdata = this.loginForm.value;
   this.timestamp = Date.now();
-  this.key = this.salt;
+  this.key = this.salt ;
   this.encodedPass = bcrypt.hashSync(formdata.password,this.key);
 
     
-    this.webapi.isLogin(formdata.username,formdata.password).subscribe((data)=>{
+    this.webapi.isLogin(formdata.username,this.encodedPass).subscribe((data)=>{
       this.btnClicked =true;  
-      let pswd = data;
       let res = bcrypt.compareSync(formdata.password,data)
       if(data)
       this.result = res?true:false;
       else
       this.result = false;
-      console.log(pswd);
+      console.log("result:"+this.result);
     })
   }
 }
